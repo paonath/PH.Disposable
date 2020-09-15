@@ -25,11 +25,6 @@ namespace PH.Disposable
             
         }
 
-        /// <summary>Allows an object to try to free resources and perform other cleanup operations before it is reclaimed by garbage collection.</summary>
-        ~CoreUnmanagedDisposable()
-        {
-            
-            InternalDispose(false);
-        }
+        
     }
 }
