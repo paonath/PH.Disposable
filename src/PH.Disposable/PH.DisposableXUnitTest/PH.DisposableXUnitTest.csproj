@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PH.Disposable.LoggingExtensions\PH.Disposable.LoggingExtensions.csproj" />
     <ProjectReference Include="..\PH.Disposable\PH.Disposable.csproj" />
   </ItemGroup>
 

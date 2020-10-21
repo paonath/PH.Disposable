@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  
+  <PackageId>PH.Disposable.LoggingExtensions</PackageId>
+
+
+  <Description>
+    Microsoft.Extensions.Logging extensions methods.
+
+    Add Scope and TraceScope.
+  </Description>
+
+  <PackageReleaseNotes>
+    DebugLogScope, InfoLogScope, ErrorLogScope and FatalLogScope
+  </PackageReleaseNotes>
+
+
+  <PackageTags>Microsoft.Extensions.Logging, IDisposable, IAsyncDisposable</PackageTags>
+
+  <PackageVersion>0.0.1</PackageVersion>
+  
+
+  <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+
+  
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="nuget_es_img.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+  <PropertyGroup>
+    <PackageIcon>nuget_es_img.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PH.Disposable\PH.Disposable.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="[2.0.0,)" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+</Project>

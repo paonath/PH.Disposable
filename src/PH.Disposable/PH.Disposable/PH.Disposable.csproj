@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -21,17 +21,10 @@
     <PackageTags>IDisposable</PackageTags>
 
     <PackageVersion>0.0.1</PackageVersion>
-    <Authors>Paolo Innocenti</Authors>
-    <Copyright>Copyright PH 2020 (c) paonath@gmail.com. All rights reserved.</Copyright>
-    <RepositoryUrl>https://github.com/paonath/PH.Disposable</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/paonath/PH.Disposable</PackageProjectUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/paonath/Icons/master/nuget_es_img.png</PackageIconUrl>
-
+   
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
 
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+   
   </PropertyGroup>
   <ItemGroup>
     <None Include="nuget_es_img.png" Pack="true" PackagePath="" />
@@ -41,6 +34,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2020.1.0" />    
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.1" />
     <PackageReference Include="JetBrains.Annotations" Version="2020.1.0" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
   </ItemGroup>

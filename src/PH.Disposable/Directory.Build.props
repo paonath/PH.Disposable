@@ -3,6 +3,15 @@
 	<Authors>Paolo Innocenti</Authors>
 	<Copyright>Copyright 2020 (c) Paolo Innocenti - paonath@gmail.com </Copyright>    
 	<AssemblyVersion>0.0.1</AssemblyVersion>
+    <Authors>Paolo Innocenti</Authors>
+  
+    <RepositoryUrl>https://github.com/paonath/PH.Disposable</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/paonath/PH.Disposable</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/paonath/Icons/master/nuget_es_img.png</PackageIconUrl>
+
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">

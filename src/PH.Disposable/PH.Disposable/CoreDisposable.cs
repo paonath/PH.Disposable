@@ -1,77 +1,76 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace PH.Disposable
 {
+
     /// <summary>
-    /// Core Disposable Abstract class: Provides a mechanism for releasing unmanaged resources.
+    /// Core Disposable abstact class: Provides a mechanism for releasing unmanaged resources.
     /// </summary>
     /// <seealso cref="PH.Disposable.ICoreDisposable" />
-    public abstract class CoreDisposable : ICoreDisposable
+    public abstract class CoreBaseDisposable : ICoreDisposable
     {
-        protected CoreDisposable()
+        protected CoreBaseDisposable()
         {
             Disposed = false;
-            
         }
+        /// <summary>
+        /// Gets a value indicating whether this <see cref="ICoreDisposable"/> is disposed.
+        /// </summary>
+        /// <value><c>true</c> if disposed; otherwise, <c>false</c>.</value>
+        public bool Disposed { get; protected set; }
 
-        
-
-        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
-        public void Dispose()
+        /// <summary>Throws <see cref="ObjectDisposedException">ObjectDisposedException</see> if <see cref="Disposed">disposed</see>.</summary>
+        /// <param name="message">The additional message for exception.</param>
+        /// <exception cref="ObjectDisposedException">
+        /// </exception>
+        public void ThrowIfDisposed(string message = "")
         {
-            InternalDispose(true);
-        }
-
-        internal virtual void InternalDispose(bool disposing)
-        {
-            if (!Disposed)
+            if (Disposed)
             {
-                Dispose(disposing);
-                Disposed = true;
-            }
-            
-            if (disposing)
-            {
-                GC.SuppressFinalize(this);
-            }
-            
-        }
+                var    name = GetType().Name;
 
-        ~CoreDisposable()
-        {
-            InternalDispose(false);
+                if (!string.IsNullOrEmpty(message))
+                {
+                    throw new ObjectDisposedException(name,message);
+                }
+                else
+                {
+                    throw new ObjectDisposedException(name);
+                }
+                
+            }
         }
 
         /// <summary>Releases unmanaged and - optionally - managed resources.</summary>
         /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
         protected abstract void Dispose(bool disposing);
-
-        /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="CoreDisposable"/> is disposed.
-        /// </summary>
-        /// <value><c>true</c> if disposed; otherwise, <c>false</c>.</value>
-        public bool Disposed { get; protected set; }
-
-        /// <summary>Initializes the scope.</summary>
-        /// <returns></returns>
-        public static DisposableScope InitScope() => new DisposableScope();
-
-        public static DisposableScope InitScope(Action disposeAction)
-            => new DisposableScope(disposeAction);  
         
-        public static DisposableScope InitScope(string name)
-            => new DisposableScope(name);
+        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+        public void Dispose()
+        {
+            Dispose(true);
+            Disposed = true;
+            GC.SuppressFinalize(this);
+        }
 
-        public static DisposableScope InitScope(string name,Action disposeAction)
-            => new DisposableScope(name,disposeAction);
+        
+    }
 
-
-
-
-
-        /// <summary>Initializes the named scope.</summary>
-        /// <param name="name">The name.</param>
+    public abstract class CoreDisposable : CoreBaseDisposable, ICoreAsyncDisposable
+    {
+        /// <summary>Releases unmanaged and - optionally - managed resources.</summary>
+        /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
         /// <returns></returns>
-        public static DisposableScope InitNamedScope(string name) => new DisposableScope(name);
+        protected abstract ValueTask DisposeAsync(bool disposing);
+
+        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+        /// <returns></returns>
+        public async ValueTask DisposeAsync()
+        {
+            await DisposeAsync(true);
+            Disposed = true;
+            GC.SuppressFinalize(this);
+        }
     }
 }

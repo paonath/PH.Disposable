@@ -1,16 +1,27 @@
+using System;
+using System.Threading.Tasks;
 using PH.Disposable;
 
 namespace PH.DisposableXUnitTest
 {
     public class TestCoreDisposable : CoreDisposable
     {
-        public bool CalledDispose { get; set; }
-        /// <summary>Releases unmanaged and - optionally - managed resources.</summary>
-        /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        public DateTime Init { get; }
+        public TestCoreDisposable()
+        {
+            Init = DateTime.UtcNow;
+            
+        }
+
         protected override void Dispose(bool disposing)
         {
             //
-            CalledDispose = true;
+        }
+
+        protected override ValueTask DisposeAsync(bool disposing)
+        {
+            //
+            return new ValueTask(Task.CompletedTask);
         }
     }
 }
