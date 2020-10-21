@@ -25,3 +25,12 @@ public class MyCoreDisposable : CoreDisposable
 }
 //thats all!
 ```
+
+# PH.Disposable.LoggingExtensions [![NuGet Badge](https://buildstats.info/nuget/PH.Disposable.LoggingExtensions)](https://www.nuget.org/packages/PH.Disposable.LoggingExtensions/)
+
+```csharp
+
+//assume logger is ILogger ot ILogger<T>
+var scope = logger.BeginTraceCoreScope("SCOPE");
+//thats all!
+```
