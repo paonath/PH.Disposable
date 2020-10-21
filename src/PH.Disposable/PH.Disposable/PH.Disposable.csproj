@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ApplicationIcon>phNugetIcon.ico</ApplicationIcon>
+
+
+    <PackageId>PH.Disposable</PackageId>
+
+
+    <Description>
+      c# Disposable base class
+
+    </Description>
+
+    <PackageReleaseNotes>
+      First Release
+    </PackageReleaseNotes>
+
+
+    <PackageTags>IDisposable</PackageTags>
+
+    <PackageVersion>0.0.1</PackageVersion>
+   
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+
+   
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="nuget_es_img.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+  <PropertyGroup>
+    <PackageIcon>nuget_es_img.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2020.1.0" />    
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.1" />
+    <PackageReference Include="JetBrains.Annotations" Version="2020.1.0" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+  </ItemGroup>
+
+
+</Project>
